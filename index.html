@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGUK Guard Application - Technical Progress Report</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        .header {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .meta-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .meta-table td {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        .meta-label {
+            font-weight: bold;
+            width: 150px;
+        }
+
+        h2 {
+            color: #2980b9;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 25px;
+            font-size: 1.1em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background-color: #f1f2f6;
+            color: #2c3e50;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-family: monospace;
+            border: 1px solid #dcdde1;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-complete {
+            background-color: #e1f7d5;
+            color: #2ecc71;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-progress {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: #e74c3c;
+        }
+
+        .section-summary {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .tech-tag {
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>SGUK Guard Application</h1>
+        <div class="subtitle">Comprehensive Technical Progress Report & Architecture Specification</div>
+        <table class="meta-table">
+            <tr>
+                <td class="meta-label">Date:</td>
+                <td>November 28, 2025</td>
+            </tr>
+            <tr>
+                <td class="meta-label">Version:</td>
+                <td>1.0.0-alpha (Build 24)</td>
+            </tr>
+            <tr>
+                <td class="meta-label">Status:</td>
+                <td><span class="status-badge status-progress">Active Development</span></td>
+            </tr>
+            <tr>
+                <td class="meta-label">Developer:</td>
+                <td>Mayank Pratap</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>1. Executive Summary</h2>
+    <p>This document details the engineering progress of the SGUK Guard mobile application. The project has successfully
+        transitioned from the architectural planning phase to a functional Alpha release. The core foundation is built
+        upon a scalable, type-safe React Native environment, ensuring cross-platform compatibility (iOS & Android) and
+        high performance. Key modules including Authentication, Job Management, and Real-time Messaging have been
+        implemented and partially integrated with the Supabase backend.</p>
+
+    <h2>2. System Architecture</h2>
+    <div class="section-summary">
+        The application utilizes a modern "Serverless" architecture, leveraging Supabase for backend services and Expo
+        for the frontend runtime. This ensures low maintenance overhead and high scalability.
+    </div>
+
+    <h3>2.1. Frontend Technology Stack</h3>
+    <ul>
+        <li><strong>Core Framework:</strong> <span class="tech-tag">React Native 0.76</span> with <span
+                class="tech-tag">Expo SDK 52</span>.</li>
+        <li><strong>Language:</strong> <span class="tech-tag">TypeScript 5.3</span> (Strict Mode enabled for maximum
+            type safety).</li>
+        <li><strong>Routing:</strong> <span class="tech-tag">expo-router v4</span> (File-based routing with deep linking
+            support).</li>
+        <li><strong>State Management:</strong> React Context API for global session state; Local state for UI
+            components.</li>
+        <li><strong>Styling:</strong> Custom Design System utilizing <span class="tech-tag">StyleSheet</span> API with
+            theme-aware tokens.</li>
+    </ul>
+
+    <h3>2.2. Backend & Infrastructure</h3>
+    <ul>
+        <li><strong>Database:</strong> <span class="tech-tag">PostgreSQL 15</span> (via Supabase).</li>
+        <li><strong>Authentication:</strong> Supabase Auth (JWT-based secure sessions).</li>
+        <li><strong>Real-time:</strong> Supabase Realtime (WebSockets) for chat and job updates.</li>
+        <li><strong>Edge Functions:</strong> Deno-based serverless functions for Push Notifications.</li>
+    </ul>
+
+    <h2>3. Detailed Feature Implementation</h2>
+
+    <h3>3.1. Authentication Module <span class="status-badge status-complete">Complete</span></h3>
+    <p>A robust authentication flow has been engineered to ensure secure access control.</p>
+    <ul>
+        <li><strong>Login Interface:</strong> Implemented in <code>app/login.tsx</code> with form validation and error
+            feedback.</li>
+        <li><strong>Session Persistence:</strong> Utilizes <code>@react-native-async-storage/async-storage</code> to
+            cache JWT tokens, allowing users to remain logged in across app restarts.</li>
+        <li><strong>Security:</strong> All API requests are authenticated via RLS (Row Level Security) policies on the
+            database level.</li>
+    </ul>
+
+    <h3>3.2. Guard Dashboard & Job Management <span class="status-badge status-complete">Complete</span></h3>
+    <p>The dashboard serves as the operational center for guards, aggregating data from multiple streams.</p>
+    <ul>
+        <li><strong>Dashboard Grid:</strong> A responsive grid layout (<code>DashboardGrid.tsx</code>) that adapts to
+            different screen sizes.</li>
+        <li><strong>Active Job Tracking:</strong> The <code>ActiveJobCard</code> component subscribes to the
+            <code>shifts</code> table to display the current ongoing shift with a "Live" status indicator.
+        </li>
+        <li><strong>Schedule Management:</strong> <code>UpcomingJobCard</code> renders a sorted list of future shifts,
+            calculating time-until-start dynamically.</li>
+        <li><strong>Job Discovery:</strong> The <code>JobListingCard</code> allows guards to browse available shifts.
+            (Accept/Decline API integration in final testing).</li>
+    </ul>
+
+    <h3>3.3. Secure Communication System <span class="status-badge status-progress">In Progress</span></h3>
+    <p>A dedicated messaging module designed for operational security and team coordination.</p>
+    <ul>
+        <li><strong>UI Implementation:</strong> A high-performance Chat UI (<code>components/chat/</code>) capable of
+            rendering thousands of messages efficiently using <code>FlatList</code> optimization.</li>
+        <li><strong>UX Features:</strong> Includes keyboard handling (<code>KeyboardAvoidingView</code>), message
+            timestamp grouping, and visual distinction between sender/receiver.</li>
+        <li><strong>Integration:</strong> Currently connecting to the <code>messages</code> table for real-time
+            WebSocket updates.</li>
+    </ul>
+
+    <h3>3.4. Notification Services <span class="status-badge status-complete">Complete</span></h3>
+    <p>A comprehensive push notification infrastructure to keep guards informed of critical updates.</p>
+    <ul>
+        <li><strong>Token Management:</strong> The <code>usePushNotifications</code> hook handles the complex logic of
+            requesting OS-level permissions and retrieving the Expo Push Token.</li>
+        <li><strong>Server-Side Dispatch:</strong> A dedicated Edge Function
+            (<code>supabase/functions/push-notification</code>) has been written to securely dispatch notifications via
+            FCM (Android) and APNs (iOS).</li>
+    </ul>
+
+    <h2>4. UI/UX & Design System</h2>
+    <p>The application features a bespoke design system tailored for the security industry—professional, clear, and
+        accessible.</p>
+    <ul>
+        <li><strong>Atomic Design:</strong> Components are structured as Atoms (Text, Icons), Molecules (Buttons,
+            Inputs), and Organisms (Cards, Forms) for maximum reusability.</li>
+        <li><strong>Theming:</strong> Built-in support for Light and Dark modes using <code>useColorScheme</code> hooks.
+        </li>
+        <li><strong>Assets:</strong> Optimized PNG/SVG assets, including the custom <code>sguk-logo.png</code> splash
+            screen implementation.</li>
+    </ul>
+
+    <h2>5. Quality Assurance & Metrics</h2>
+    <ul>
+        <li><strong>Linting:</strong> ESLint configured with <code>expo/recommended</code> rules to enforce code style.
+        </li>
+        <li><strong>Performance:</strong> All list views utilize virtualization to maintain 60fps scroll performance.
+        </li>
+        <li><strong>Bundle Size:</strong> Tree-shaking enabled to minimize the final application binary size.</li>
+    </ul>
+
+    <h2>6. Remaining Roadmap</h2>
+    <table class="meta-table" style="border: 1px solid #eee;">
+        <tr style="background-color: #f8f9fa;">
+            <th style="text-align: left; padding: 10px;">Task</th>
+            <th style="text-align: left; padding: 10px;">Priority</th>
+            <th style="text-align: left; padding: 10px;">Status</th>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Messages Integration</strong><br><span
+                    style="font-size:0.9em; color:#666;">Connect Chat UI to Supabase Realtime for live messaging.</span>
+            </td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">High</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">In Progress</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Jobs Screen Integration</strong><br><span
+                    style="font-size:0.9em; color:#666;">Implement full CRUD for Jobs & Shifts via Supabase.</span></td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">High</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">Pending</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Profile Integration</strong><br><span
+                    style="font-size:0.9em; color:#666;">Sync Profile UI with Supabase 'profiles' table.</span></td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">Medium</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">Pending</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px;">Offline Data Caching</td>
+            <td style="padding: 10px;">Low</td>
+            <td style="padding: 10px;">Planned</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
